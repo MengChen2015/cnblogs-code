@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <title>cordova测试</title>
+    </head>
+    <body>
+	    <h3>因为ios涉及到具体的公司证书，那么只贴出www的静态代码以及效果图</h3>
+       <p>
+			<a href="pdf/lustForLife.pdf">a标签打开pdf</a>
+		</p>
+		<p>
+			<button id="loadPDF1">document.location.href打开pdf</button>
+		</p>
+		<p>
+			<button id="loadPDF2">inappbrowser</button>
+		</p>
+
+		<script type="text/javascript" src="cordova.js"></script>
+        <script>
+            document.addEventListener('deviceready', init, false);
+
+			function init() {
+				document.querySelector('#loadPDF1').addEventListener('touchend', loadPDF1,false);
+				document.querySelector('#loadPDF2').addEventListener('touchend', loadPDF2,false);
+			}
+
+			function loadPDF1() {
+				console.log('loadPDF1');
+				document.location.href='pdf/lustForLife.pdf';
+			}
+
+			function loadPDF2() {
+				console.log('loadPDF2');
+				var ref = cordova.InAppBrowser.open('pdf/lustForLife.pdf', '_blank', 'location=no');
+			}
+        </script>
+    </body>
+</html>
